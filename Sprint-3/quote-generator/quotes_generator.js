@@ -1,6 +1,7 @@
+// Split file for lisibility.
 import { quotes } from "./quotes.js";
-
-window.addEventListener("load", () => {
+// All begins when DOM is loaded.
+window.addEventListener("DOMContentLoaded", () => {
   const trigger = document.getElementById("new-quote");
   const quote = document.getElementById("quote");
   const author = document.getElementById("author");
@@ -9,15 +10,13 @@ window.addEventListener("load", () => {
     displayQuote();
   });
 });
-
-/* async  */
-function displayQuote() {
+// Display with an animation.
+async function displayQuote() {
   const currentQuote = pickFromArray(quotes);
-  //await writeText(currentQuote.quote, quote);
-  quote.innerHTML = currentQuote.quote;
+  await writeText(currentQuote.quote, quote);
   author.innerHTML = currentQuote.author;
 }
-
+// Animation.
 function writeText(text, el) {
   const lg = text.length;
   let count = 0;
@@ -51,7 +50,7 @@ function writeText(text, el) {
 // ---------------
 // pickFromArray(['a','b','c','d'])     // maybe returns 'c'
 
-// You don't need to change this function
+// You don't need to change this function.
 function pickFromArray(choices) {
   return choices[Math.floor(Math.random() * choices.length)];
 }
