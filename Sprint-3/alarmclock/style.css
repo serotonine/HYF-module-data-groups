@@ -1,15 +1,67 @@
+:root {
+  --size: 0%;
+}
+
+
+body {
+  background-color: aliceblue;
+  height: 100vh;
+  transition: background-color 0.2s ;
+  &.alarm{
+    background: radial-gradient(circle,rgba(250, 221, 5, 1) var(--size), rgba(255, 127, 80, 1) 80%);
+    animation: alarm 0.2s alternate infinite;
+  }
+}
+button {
+all:reset;
+cursor: pointer;
+padding: 0.75rem 1rem;
+border: lightgray;
+background-color: gainsboro;
+border-radius: 1rem;
+transition: all 0.2s ease-out;
+&:hover{
+  background-color: lightskyblue;
+}
+&.active{
+  background-color:coral;
+}
+}
+
 .centre {
   position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 2px 2px 0.5rem lightgray;
 }
 
 #alarmSet {
   margin: 20px;
 }
 
-h1 {
+h1,
+#output {
   text-align: center;
 }
+
+#output-error {
+  visibility: hidden;
+  padding: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: white;
+  background-color: red;
+}
+#output-error.active{
+    visibility: visible;
+  }
+
+  @keyframes alarm{
+    0%{--size:0%}
+   100%{--size:25%}
+
+  }
