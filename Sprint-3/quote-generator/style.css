@@ -1,1 +1,131 @@
-/** Write your CSS in here **/
+:root{
+  --gold:rgba(250, 221, 5, 1);
+  --coral: rgba(255, 159, 80, 1);
+  --body:rgb(32, 15, 1);
+  --whitesmoke : rgba(245, 245, 245,1);
+  --whitesmoke-80 : rgba(245, 245, 245,0.8);
+
+}
+/** Reset **/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  color:var(--body);
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article>*+* {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* layout */
+body {
+  background: radial-gradient(circle, var(--gold) 25%, var(--coral) 80%);
+}
+
+.header {
+  position: fixed;
+}
+
+.punchline {
+  font-family: "Cookie", cursive;
+  margin: 1.25rem 0;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: normal;
+  color:var(--whitesmoke);
+}
+
+.content {
+  padding: 0 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote-box {
+  width: 100ch;
+  margin: auto 0;
+}
+
+#quote {
+  font-size: 4rem;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  float: right;
+  font-family:'Franklin Gothic Medium', Arial, sans-serif;
+  padding: 0.5rem 1rem;
+  background-color: var(--whitesmoke);
+  border-radius: 1rem;
+  transition: all 0.2s ease-out;
+}
+button:hover {
+    transform-origin: center;
+    transform: scale(1.2);
+  }

@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title here</title>
-    <script defer src="quotes.js"></script>
+    <title>Quote generator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script defer type="module" src="quotes_generator.js"></script>
   </head>
+
   <body>
-    <h1>hello there</h1>
-    <p id="quote"></p>
-    <p id="author"></p>
-    <button type="button" id="new-quote">New quote</button>
+    <div class="content">
+      <header class="header">
+        <h1 class="punchline">Inspire me...</h1>
+      </header>
+      <main class="main">
+        <article class="quote-box">
+          <h2 id="quote">Strive not to be a success, but rather to be of value.</h2>
+          <p id="author">Albert Einstein</p>
+          <button type="button" id="new-quote">New quote</button>
+        </article>
+      </main>
+      </div.content>
   </body>
+
 </html>
