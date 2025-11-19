@@ -1,8 +1,8 @@
 const images = [
-  "./assets/cute-cat-a.png",
-  "./assets/cute-cat-b.jpg",
-  "./assets/cute-cat-c.jpg",
-  "./assets/cute-cat-d.png",
+  "./assets/cute-cat-a.webp",
+  "./assets/cute-cat-b.webp",
+  "./assets/cute-cat-c.webp",
+  "./assets/cute-cat-d.webp",
 ];
 
 // Write your code here //
