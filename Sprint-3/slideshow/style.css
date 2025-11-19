@@ -2,7 +2,7 @@
 :root {
   --gold: rgba(250, 221, 5, 1);
   --coral: rgba(255, 159, 80, 1);
-  --body: rgb(32, 15, 1);
+  --body: rgb(98 105 112);
   --rosybrown-100: rgba(188, 143, 143, 1);
   --rosybrown-80: rgba(188, 143, 143, 0.8);
   --rosybrown-60: rgba(188, 143, 143, 0.6);
@@ -50,6 +50,7 @@ body {
   line-height: 1.5;
   color: var(--body);
   background-color: var(--rosybrown-40);
+  background-image: url("./assets/cat.svg");
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -77,13 +78,13 @@ select {
 }
 
 /* layout */
-h1 {
-  font-size: 5rem;
-}
 
-.header {
+header > h1 {
   font-family: "Cookie", cursive;
+  font-size: 5rem;
   text-align: center;
+  color: var(--whitesmoke-100);
+  text-shadow: 5px 5px 20px var(--rosybrown-100);
 }
 
 .slideshow {
@@ -101,6 +102,7 @@ h1 {
 
 .slideshow_image {
   border-radius: calc(var(--border-radius) * 2);
+  border: 1px solid var(--rosybrown-40);
   overflow: hidden;
   flex-shrink: 0;
   width: 800px;
@@ -146,7 +148,10 @@ button {
   transition: all 0.2s ease-out;
 }
 
-button:hover,
+button:hover{
+  background-color: var(--rosybrown-60);
+  color: var(--whitesmoke-100);
+}
 button.active {
   background-color: var(--rosybrown-100);
   color: var(--whitesmoke-100);
