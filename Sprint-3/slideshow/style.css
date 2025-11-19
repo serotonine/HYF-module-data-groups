@@ -1,1 +1,166 @@
 /** Write your CSS in here **/
+:root {
+  --gold: rgba(250, 221, 5, 1);
+  --coral: rgba(255, 159, 80, 1);
+  --body: rgb(32, 15, 1);
+  --rosybrown-100: rgba(188, 143, 143, 1);
+  --rosybrown-80: rgba(188, 143, 143, 0.8);
+  --rosybrown-60: rgba(188, 143, 143, 0.6);
+  --rosybrown-40: rgba(188, 143, 143, 0.4);
+  --rosybrown-20: rgba(188, 143, 143, 0.2);
+  --whitesmoke-100: rgba(245, 245, 245, 1);
+  --whitesmoke-80: rgba(245, 245, 245, 0.8);
+  --border-radius: 0.25rem;
+
+}
+
+/** Reset **/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  color: var(--body);
+  background-color: var(--rosybrown-40);
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Natural flow and rhythm in articles by default */
+article>*+* {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* layout */
+h1 {
+  font-size: 5rem;
+}
+
+.header {
+  font-family: "Cookie", cursive;
+  text-align: center;
+}
+
+.slideshow {
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slideshow_images {
+  height: 500px;
+  position: relative;
+  display: flex;
+  transition: all 0.5s;
+}
+
+.slideshow_image {
+  border-radius: calc(var(--border-radius) * 2);
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 800px;
+  height: 100%;
+}
+
+.slideshow_image>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slideshow_navigation,
+.slideshow_chips {
+  padding-top: 1rem;
+}
+.slideshow_navigation{
+  justify-content: space-between;
+}
+.slideshow_chips {
+  justify-content: center;
+}
+.slideshow_chips-items{
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--whitesmoke-100);
+  opacity: 0.5;
+  border-radius: 50%;;
+}
+.slideshow_chips-items.active{
+  opacity: 1;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  float: right;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  padding: 0.5rem 1rem;
+  background-color: var(--whitesmoke-100);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease-out;
+}
+
+button:hover,
+button.active {
+  background-color: var(--rosybrown-100);
+  color: var(--whitesmoke-100);
+}
+button.disabled{
+  pointer-events: none;
+  opacity:0.5;
+}
+/* Utlities */
+.flex{
+  display:flex;
+  gap: 0.75rem;
+}
+.size-6{
+  width: 1.5rem;
+  height: 1.5rem;
+}
