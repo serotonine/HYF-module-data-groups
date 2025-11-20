@@ -78,7 +78,6 @@ select {
 }
 
 /* layout */
-
 header > h1 {
   font-family: "Cookie", cursive;
   font-size: 5rem;
@@ -97,7 +96,6 @@ header > h1 {
   height: 500px;
   position: relative;
   display: flex;
-  transition: all 0.5s;
 }
 
 .slideshow_image {

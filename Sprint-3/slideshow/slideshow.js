@@ -6,15 +6,16 @@ const images = [
 ];
 
 // Write your code here //
-// Translation.
-// values variables.
+
+// values.
 const step = 800;
 let currentId = 0;
 const lg = images.length - 1;
 // backward & fowards.
+let slides = [];
 let autoSwitchActive = false;
 let interval;
-// DOM variables.
+// DOM.
 const slideshowImgs = document.querySelector(".slideshow_images");
 const slideshowChips = document.querySelector(".slideshow_chips");
 const foward = document.getElementById("forward-btn");
@@ -25,9 +26,13 @@ const chips = document.querySelector(".slideshow_chips");
 // Go!
 window.addEventListener("load", () => {
   images.forEach((img, id) => {
-    slideshowImgs.append(createSlide(img, id));
+    slides.push(createSlide(img, id));
     slideshowChips.append(createChip(id));
   });
+  // Init : add first slide.
+  slideshowImgs.appendChild(slides[0]);
+
+  // Events.
   foward.addEventListener("click", function () {
     switchImg(this);
   });
@@ -42,20 +47,23 @@ window.addEventListener("load", () => {
   });
 });
 
+// Helpers.
+
 // Populate DOM.
 function createSlide(img, id) {
   const box = document.createElement("div");
-  box.setAttribute("data-id", id);
   box.classList.add("slideshow_image");
+  box.dataset.id = id;
   const image = document.createElement("img");
   image.src = img;
   box.append(image);
   return box;
 }
+
 function createChip(id) {
   const chip = document.createElement("div");
-  chip.setAttribute("data-id", id);
   chip.classList.add("slideshow_chips-items");
+  chip.dataset.id = id
   if (currentId === id) {
     chip.classList.add("active");
   }
@@ -68,10 +76,57 @@ function setActiveChip(id) {
       : child.classList.remove("active");
   }
 }
+
 // Events.
-// Used in switchImg function.
-function translateSlideShow() {
-  slideshowImgs.style.transform = `translateX(${currentId * -step}px)`;
+
+// Slider animation.
+function translateSlideShow(direction) {
+    // Forward.
+  if (direction === "next") {
+    slideshowImgs.append(slides[currentId]);
+    slideshowImgs.style.transition = "transform 0.5s";
+    slideshowImgs.style.transform = `translateX(${-step}px)`;
+
+    slideshowImgs.addEventListener(
+      "transitionend",
+      function cleanup() {
+        slideshowImgs.removeChild(slideshowImgs.firstElementChild);
+        slideshowImgs.style.transition = "none";
+        slideshowImgs.style.transform = "translateX(0)";
+      },
+      { once: true }
+    );
+  } 
+  // Backward.
+  else {
+    slideshowImgs.style.transition = "none";
+    slideshowImgs.style.transform = `translateX(${-step}px)`;
+    // Prepend.
+    slideshowImgs.prepend(slides[currentId]);
+    // Force reflow to trigger the transition.
+    void slideshowImgs.offsetWidth;
+    /* 
+     * requestAnimationFrame (rAF) is a navigator function 
+     * execute a function before navigator refresh
+    
+    requestAnimationFrame(() => {
+      slideshowImgs.style.transition = "transform 0.5s";
+      slideshowImgs.style.transform = `translateX(0)`;
+    });*/
+    // Lancer la transition vers 0
+    slideshowImgs.style.transition = "transform 0.5s";
+    slideshowImgs.style.transform = `translateX(0)`;
+
+    // Remove next slide.
+    slideshowImgs.addEventListener(
+      "transitionend",
+      function cleanup() {
+        slideshowImgs.removeChild(slideshowImgs.lastElementChild);
+        slideshowImgs.style.transition = "none";
+      },
+      { once: true }
+    );
+  }
 }
 // Used in autoSwitchImg function.
 function toggleDisabledBtn(bool, elements) {
@@ -88,17 +143,19 @@ function toggleDisabledBtn(bool, elements) {
 }
 // Manual.
 function switchImg(el) {
-  console.log("switchImg", el);
+  let direction;
   switch (el.id) {
     case "forward-btn":
-      currentId < lg ? currentId++ : (currentId = 0);
+      direction = "next";
+      currentId = currentId < lg ? currentId + 1 : 0;
       break;
     case "backward-btn":
-      currentId === 0 ? (currentId = lg) : currentId--;
+      direction = "prev";
+      currentId = currentId === 0 ? lg : currentId - 1;
       break;
   }
   setActiveChip(currentId);
-  translateSlideShow();
+  translateSlideShow(direction);
 }
 // Auto.
 function autoSwitchImg(el, timer = 2000) {
@@ -124,4 +181,3 @@ function autoSwitchImg(el, timer = 2000) {
     clearInterval(interval);
   }
 }
-
