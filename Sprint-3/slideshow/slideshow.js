@@ -124,4 +124,3 @@ function autoSwitchImg(el, timer = 2000) {
     clearInterval(interval);
   }
 }
-

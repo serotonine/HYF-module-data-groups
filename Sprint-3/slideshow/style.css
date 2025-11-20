@@ -79,7 +79,7 @@ select {
 
 /* layout */
 
-header > h1 {
+header>h1 {
   font-family: "Cookie", cursive;
   font-size: 5rem;
   text-align: center;
@@ -120,20 +120,25 @@ header > h1 {
 .slideshow_chips {
   padding-top: 1rem;
 }
-.slideshow_navigation{
+
+.slideshow_navigation {
   justify-content: space-between;
 }
+
 .slideshow_chips {
   justify-content: center;
 }
-.slideshow_chips-items{
+
+.slideshow_chips-items {
   height: 0.75rem;
   width: 0.75rem;
   background-color: var(--whitesmoke-100);
   opacity: 0.5;
-  border-radius: 50%;;
+  border-radius: 50%;
+  ;
 }
-.slideshow_chips-items.active{
+
+.slideshow_chips-items.active {
   opacity: 1;
 }
 
@@ -148,24 +153,28 @@ button {
   transition: all 0.2s ease-out;
 }
 
-button:hover{
+button:hover {
   background-color: var(--rosybrown-60);
   color: var(--whitesmoke-100);
 }
+
 button.active {
   background-color: var(--rosybrown-100);
   color: var(--whitesmoke-100);
 }
-button.disabled{
+
+button.disabled {
   pointer-events: none;
-  opacity:0.5;
+  opacity: 0.5;
 }
+
 /* Utlities */
-.flex{
-  display:flex;
+.flex {
+  display: flex;
   gap: 0.75rem;
 }
-.size-6{
+
+.size-6 {
   width: 1.5rem;
   height: 1.5rem;
 }
