@@ -1,11 +1,10 @@
-const images = [
-  "./assets/cute-cat-a.webp",
-  "./assets/cute-cat-b.webp",
-  "./assets/cute-cat-c.webp",
-  "./assets/cute-cat-d.webp",
-];
-
-// Write your code here //
+import { images } from "./includes/images.js";
+import {
+  createSlide,
+  createChip,
+  setActiveChip,
+  toggleDisabledBtn,
+} from "./includes/dom.js";
 
 // values.
 const step = 800;
@@ -17,6 +16,7 @@ const lg = images.length - 1;
 let slides = [];
 let autoSwitchActive = false;
 let interval;
+
 // DOM.
 const slideshowImgs = document.querySelector(".slideshow_images");
 const slideshowChips = document.querySelector(".slideshow_chips");
@@ -30,7 +30,7 @@ const setTimer = document.getElementById("timer");
 window.addEventListener("load", () => {
   images.forEach((img, id) => {
     slides.push(createSlide(img, id));
-    slideshowChips.append(createChip(id));
+    slideshowChips.append(createChip(id, currentId));
   });
   // Init : add first slide.
   slideshowImgs.appendChild(slides[0]);
@@ -43,51 +43,20 @@ window.addEventListener("load", () => {
     switchImg(this);
   });
   autoFoward.addEventListener("click", function () {
-    autoSwitchImg(this,timer);
+    autoSwitchImg(this, timer);
   });
   autoBackward.addEventListener("click", function () {
-    autoSwitchImg(this,timer);
+    autoSwitchImg(this, timer);
   });
-  setTimer.addEventListener("change", function(){
+  setTimer.addEventListener("change", function () {
     timer = this.value;
-  })
+  });
 });
 
 // Helpers.
-
-// Populate DOM.
-function createSlide(img, id) {
-  const box = document.createElement("div");
-  box.classList.add("slideshow_image");
-  box.dataset.id = id;
-  const image = document.createElement("img");
-  image.src = img;
-  box.append(image);
-  return box;
-}
-
-function createChip(id) {
-  const chip = document.createElement("div");
-  chip.classList.add("slideshow_chips-items");
-  chip.dataset.id = id
-  if (currentId === id) {
-    chip.classList.add("active");
-  }
-  return chip;
-}
-function setActiveChip(id) {
-  for (let child of chips.children) {
-    child.dataset.id == id
-      ? child.classList.add("active")
-      : child.classList.remove("active");
-  }
-}
-
-// Events.
-
 // Slider animation.
 function translateSlideShow(direction) {
-    // Forward.
+  // Forward.
   if (direction === "next") {
     slideshowImgs.append(slides[currentId]);
     slideshowImgs.style.transition = "transform 0.5s";
@@ -102,7 +71,7 @@ function translateSlideShow(direction) {
       },
       { once: true }
     );
-  } 
+  }
   // Backward.
   else {
     slideshowImgs.style.transition = "none";
@@ -136,19 +105,7 @@ function translateSlideShow(direction) {
     );
   }
 }
-// Used in autoSwitchImg function.
-function toggleDisabledBtn(bool, elements) {
-  if (bool) {
-    elements.forEach((el) => {
-      el.classList.add("disabled");
-      el.classList.remove("active");
-    });
-  } else {
-    elements.forEach((el) => {
-      el.classList.remove("disabled");
-    });
-  }
-}
+
 // Manual.
 function switchImg(el) {
   let direction;
@@ -162,7 +119,7 @@ function switchImg(el) {
       currentId = currentId === 0 ? lg : currentId - 1;
       break;
   }
-  setActiveChip(currentId);
+  setActiveChip(currentId, chips.children);
   translateSlideShow(direction);
 }
 // Auto.
