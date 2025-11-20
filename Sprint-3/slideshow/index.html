@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A lovely kitten slideshow.">
     <title>Image carousel</title>
     <link rel="icon" type="image/svg" href="./icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,18 +26,18 @@
         </nav>
         <nav class="slideshow_navigation flex">
           <div class="flex">
-            <button type="button" id="backward-btn" class="flex"><svg xmlns="http://www.w3.org/2000/svg"
+            <button type="button" id="backward-btn" aria-label="Backward slide" class="flex"><svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd"
                   d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z"
                   clip-rule="evenodd" />
               </svg>
             </button>
-            <button type="button" id="auto-backward-btn">Auto Backwards</button>
+            <button type="button" id="auto-backward-btn" aria-label="Auto backward slide animation">Auto Backwards</button>
           </div>
           <div class="flex">
-            <button type="button" id="auto-forward-btn">Auto Forward</button>
-            <button type="button" id="forward-btn" class="flex">
+            <button type="button" id="auto-forward-btn" aria-label="Auto forward slide animation"> Auto Forward</button>
+            <button type="button" id="forward-btn" aria-label="Forward slide" class="flex">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd"
                   d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"

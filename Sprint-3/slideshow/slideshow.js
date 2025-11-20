@@ -49,6 +49,7 @@ function createSlide(img, id) {
   box.classList.add("slideshow_image");
   const image = document.createElement("img");
   image.src = img;
+  image.alt = `cat ${id}`;
   box.append(image);
   return box;
 }
