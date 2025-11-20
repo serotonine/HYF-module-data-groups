@@ -1,17 +1,12 @@
 /** Write your CSS in here **/
 :root {
-  --gold: rgba(250, 221, 5, 1);
-  --coral: rgba(255, 159, 80, 1);
   --body: rgb(98 105 112);
   --rosybrown-100: rgba(188, 143, 143, 1);
-  --rosybrown-80: rgba(188, 143, 143, 0.8);
   --rosybrown-60: rgba(188, 143, 143, 0.6);
   --rosybrown-40: rgba(188, 143, 143, 0.4);
-  --rosybrown-20: rgba(188, 143, 143, 0.2);
   --whitesmoke-100: rgba(245, 245, 245, 1);
-  --whitesmoke-80: rgba(245, 245, 245, 0.8);
+  --white-80:rgba(250,250,250,0.8);
   --border-radius: 0.25rem;
-
 }
 
 /** Reset **/
@@ -42,17 +37,6 @@ dd {
   margin: 0;
 }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  color: var(--body);
-  background-color: var(--rosybrown-40);
-  background-image: url("./assets/cat.svg");
-}
-
 /* Remove list styles on ul, ol elements with a class attribute */
 ul[class],
 ol[class] {
@@ -78,7 +62,20 @@ select {
 }
 
 /* layout */
-header > h1 {
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  color: var(--body);
+  background-color: var(--rosybrown-40);
+  background-image: url("./assets/cat.svg");
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+
+}
+
+header>h1 {
   font-family: "Cookie", cursive;
   font-size: 5rem;
   text-align: center;
@@ -118,52 +115,75 @@ header > h1 {
 .slideshow_chips {
   padding-top: 1rem;
 }
-.slideshow_navigation{
+
+.slideshow_navigation {
   justify-content: space-between;
 }
+
 .slideshow_chips {
   justify-content: center;
 }
-.slideshow_chips-items{
+
+.slideshow_chips-items {
   height: 0.75rem;
   width: 0.75rem;
   background-color: var(--whitesmoke-100);
   opacity: 0.5;
-  border-radius: 50%;;
+  border-radius: 50%;
 }
-.slideshow_chips-items.active{
+
+.slideshow_chips-items.active {
   opacity: 1;
 }
 
 button {
   all: unset;
   cursor: pointer;
-  float: right;
-  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
   padding: 0.5rem 1rem;
   background-color: var(--whitesmoke-100);
   border-radius: var(--border-radius);
   transition: all 0.2s ease-out;
 }
 
-button:hover{
+button:hover {
   background-color: var(--rosybrown-60);
   color: var(--whitesmoke-100);
 }
+
 button.active {
   background-color: var(--rosybrown-100);
   color: var(--whitesmoke-100);
 }
-button.disabled{
+
+button.disabled,
+.timer.disabled {
   pointer-events: none;
-  opacity:0.5;
+  opacity: 0.5;
+}
+.timer{
+  padding: 0.5rem 1rem;
+  background-color: var(--whitesmoke-100);
+  border-radius: var(--border-radius);
+}
+#timer{
+  all:unset;
+  margin-left: 0.25rem;
+  border-radius: var(--border-radius);
+  background-color: var(--white-80);
+  width: 10ch;
+  padding: 0 0.25rem;
+  &:focus{
+    outline: 1px solid dodgerblue;
+  }
 }
 /* Utlities */
-.flex{
-  display:flex;
+
+.flex {
+  display: flex;
   gap: 0.75rem;
 }
-.size-6{
+
+.size-6 {
   width: 1.5rem;
   height: 1.5rem;
 }

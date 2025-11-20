@@ -10,7 +10,9 @@ const images = [
 // values.
 const step = 800;
 let currentId = 0;
+let timer = 2000;
 const lg = images.length - 1;
+
 // backward & fowards.
 let slides = [];
 let autoSwitchActive = false;
@@ -23,6 +25,7 @@ const backward = document.getElementById("backward-btn");
 const autoFoward = document.getElementById("auto-forward-btn");
 const autoBackward = document.getElementById("auto-backward-btn");
 const chips = document.querySelector(".slideshow_chips");
+const setTimer = document.getElementById("timer");
 // Go!
 window.addEventListener("load", () => {
   images.forEach((img, id) => {
@@ -40,11 +43,14 @@ window.addEventListener("load", () => {
     switchImg(this);
   });
   autoFoward.addEventListener("click", function () {
-    autoSwitchImg(this);
+    autoSwitchImg(this,timer);
   });
   autoBackward.addEventListener("click", function () {
-    autoSwitchImg(this);
+    autoSwitchImg(this,timer);
   });
+  setTimer.addEventListener("change", function(){
+    timer = this.value;
+  })
 });
 
 // Helpers.
@@ -105,6 +111,7 @@ function translateSlideShow(direction) {
     slideshowImgs.prepend(slides[currentId]);
     // Force reflow to trigger the transition.
     void slideshowImgs.offsetWidth;
+
     /* 
      * requestAnimationFrame (rAF) is a navigator function 
      * execute a function before navigator refresh
@@ -113,6 +120,7 @@ function translateSlideShow(direction) {
       slideshowImgs.style.transition = "transform 0.5s";
       slideshowImgs.style.transform = `translateX(0)`;
     });*/
+
     // Lancer la transition vers 0
     slideshowImgs.style.transition = "transform 0.5s";
     slideshowImgs.style.transform = `translateX(0)`;
@@ -158,10 +166,10 @@ function switchImg(el) {
   translateSlideShow(direction);
 }
 // Auto.
-function autoSwitchImg(el, timer = 2000) {
+function autoSwitchImg(el, time) {
   autoSwitchActive = !autoSwitchActive;
   el.classList.toggle("active");
-  const elements = [backward, foward];
+  const elements = [backward, foward, setTimer.parentElement];
   let switcher;
   switch (el.id) {
     case "auto-forward-btn":
@@ -175,7 +183,7 @@ function autoSwitchImg(el, timer = 2000) {
   }
   if (autoSwitchActive === true) {
     toggleDisabledBtn(true, elements);
-    interval = setInterval(() => switchImg(switcher), 2000);
+    interval = setInterval(() => switchImg(switcher), time);
   } else {
     toggleDisabledBtn(false, elements);
     clearInterval(interval);
