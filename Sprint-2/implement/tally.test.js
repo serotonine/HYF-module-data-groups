@@ -26,21 +26,21 @@ test('When passed an array of items, returns an object containing the count for 
 // Given an empty array
 // When passed to tally
 // Then it should return an empty object
-test('tally on an empty array returns an empty object.', () => {
+test('Function tally on an empty array returns an empty object.', () => {
   expect(tally([])).toEqual({});
 });
 
 // Given an array with duplicate items
 // When passed to tally
 // Then it should return counts for each unique item
-test('tally on an empty array returns an empty object.', () => {
+test('Function tally on an array with duplicate items returns counts for each unique item.', () => {
   expect(tally(['a', 'a', 'a','a', 'a', 'a'])).toEqual({'a': 6});
 });
 
 // Given an invalid input like a string
 // When passed to tally
 // Then it should throw an error
-test("invalid input like a string, it throws an error", () => {
+test("Function tally on a invalid input like a string, it throws an error", () => {
     const input = "babar";
     expect(() => tally(input)).toThrowError();
   });

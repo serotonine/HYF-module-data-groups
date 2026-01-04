@@ -38,4 +38,4 @@ function invert(obj) {
  */
 
 // e) Fix the implementation of invert (and write tests to prove it's fixed!)
-console.log(invert({ a: 1, b: 2 }));
+module.exports = invert;
