@@ -17,20 +17,18 @@ E.g. dedupe([1, 2, 1]) target output: [1, 2]
 // When passed to the dedupe function
 // Then it should return an empty array
 // test.todo("given an empty array, it returns an empty array");
-it("given an empty array, it returns an empty array", () => {
+it(`Given an empty array, it returns an empty array []`, () => {
     const list = [];
-    dedupe(list);
-    expect(list).toEqual([]);
+    expect(dedupe(list)).toEqual(list);
   });
 
 // Given an array with no duplicates
 // When passed to the dedupe function
 // Then it should return a copy of the original array
 // test.todo("given an array with no duplicates, it returns a copy of the original array");
-it("given an array with no duplicates, it returns a copy of the original array", () => {
+it(`Given an array with no duplicates, it returns a copy of the original array [1,2,3,4,5,6,"robert"]`, () => {
     const list = [1,2,3,4,5,6,"robert"];
-    dedupe(list);
-    expect(list).toEqual([1,2,3,4,5,6,"robert"]);
+    expect(dedupe(list)).toEqual(list);
   });
 
 // Given an array with strings or numbers
@@ -49,5 +47,5 @@ it("given an array with no duplicates, it returns a copy of the original array",
     { input: ["banana", "apple", "kiwi", "kiwi", "banana"], expected: ["banana", "apple", "kiwi"] },
     { input: [undefined, "apple", null, null, 2, undefined, 4], expected: [undefined, "apple", null, 2, 4] },
   ].forEach(({ input, expected }) =>
-    it(`given an array with strings or numbers, it returns an array with duplicate values removed [${input}]`, () => expect(dedupe(input)).toEqual(expected))
+    it(`Given an array with strings or numbers, it returns an array with duplicate values removed [${input}]`, () => expect(dedupe(input)).toEqual(expected))
   );

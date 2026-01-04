@@ -24,18 +24,16 @@ function calculateMedian(list) {
   if (lg === 0) {
     return null;
   }
-  const middleIndex = Math.floor(lg / 2);
+
   // If lg is odd.
   if (lg % 2 !== 0) {
-    const [median] = numList.splice(Math.floor(lg / 2), 1);
-    return median;
+    const middleIndex = Math.floor(lg / 2);
+    return numList[middleIndex];
   }
   // If lg is even.
   else {
-    const middleIndex = numList
-      .splice(lg / 2 - 1, 2)
-      .reduce((acc, current) => acc + current, 0);
-    return middleIndex / 2;
+    const middleIndex = Math.floor(lg / 2 - 1);
+    return (numList[middleIndex] + numList[middleIndex + 1]) / 2;
   }
 }
 
